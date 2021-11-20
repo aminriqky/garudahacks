@@ -2,20 +2,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import {
-  chakra, Flex, FormControl, Input, Select, Button, Checkbox, AspectRatio, useBreakpointValue, Text, Box
+  chakra, Flex, FormControl, Input, Button, Checkbox, AspectRatio, useBreakpointValue, Text, Box
 } from '@chakra-ui/react';
 
-export default function Home() {
+export default function Login() {
   return (
     <React.Fragment>
       <Flex flexDir={useBreakpointValue({ base: "column", lg: "row" })}>
         <Flex flexDir="column" justifyContent="center" w={{ lg:"600px" }} px={{ base: 8, lg: 20 }} py="36px">
-          <chakra.h1 fontSize={{ base: "4xl", lg: "4xl", xl: "5xl" }} mb={6}
+          <chakra.h1 fontSize={{ base: "2xl", lg: "4xl", xl: "5xl" }} mb={6}
             fontWeight="bold"
             color="black"
             lineHeight="shorter"
           >
-            Get started for free.
+            Welcome back.
           </chakra.h1>
           <FormControl id="email" mb="4">
             <Input placeholder="Email" type="email" isRequired={true} />
@@ -23,21 +23,14 @@ export default function Home() {
           <FormControl id="password" mb="4">
             <Input placeholder="Password" type="password" isRequired={true} />
           </FormControl>
-          <FormControl id="password" mb="4">
-            <Select placeholder="How did you hear about us?">
-              <option>Friend</option>
-              <option>Family</option>
-              <option>Social Media</option>
-            </Select>
-          </FormControl>
+          <Checkbox mb="4" size="md" colorScheme="yellow">Remember me</Checkbox>
           <Button w="100%" textColor="white" colorScheme="yellow" mb="4">
-            Sign Up
+            Sign In
           </Button>
-          <Checkbox mb="4" size="md" colorScheme="yellow" defaultIsChecked>Sign up for our newsletter</Checkbox>
           <Flex flexDir="row">
-            <Text mr="1">Already have an account?</Text>
+            <Text mr="1">{"Don't have an account?"}</Text>
             <Box _hover={{ textDecor: "underline" }} color="orange.600">
-              <Link href="/login">Sign in</Link>
+              <Link href="/">Sign up</Link>
             </Box>
           </Flex>
         </Flex>
