@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
-        <title>Social Media Management App</title>
+        <title>Nektar - Social Media Management App</title>
         <meta name="description" content="GarudaHacks 2.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
