@@ -1,7 +1,8 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import React from 'react';
 import {
-  chakra, Flex, FormControl, Input, Select, Button, Checkbox
+  chakra, Flex, FormControl, Input, Select, Button, Checkbox, AspectRatio
 } from '@chakra-ui/react';
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex flexDir="row">
-        <Flex flexDir="column" justifyContent="center" px={{ base: 4, lg: 40 }} mt="17%" mb="17%">
+        <Flex flexDir="column" justifyContent="center" px={{ base: 4, lg: 20 }} mt="17%" mb="17%">
           <chakra.h1 fontSize={{ base: "4xl", md: "4xl", lg: "5xl" }}
             mb={6}
             fontWeight="bold"
@@ -40,16 +41,9 @@ export default function Home() {
           </Button>
           <Checkbox size="sm" colorScheme="yellow" defaultIsChecked>Sign up for our newsletter</Checkbox>
         </Flex>
-        <Flex flexDir="column" bg="gray.200" justifyContent="center" px={{ base: 4, lg: 20, '2xl': 40 }}>
-          <chakra.h1
-            fontSize={{ base: "4xl", md: "4xl", lg: "5xl" }}
-            fontWeight="bold"
-            color="black"
-            lineHeight="shorter"
-          >
-            Great customer relationships start here.
-          </chakra.h1>
-        </Flex>
+        <AspectRatio flexDir="column" bg="gray.200" justifyContent="center" w="100%">
+          <Image alt="laptop" src="https://source.unsplash.com/random/?laptop" layout="fill"/>
+        </AspectRatio>
       </Flex>
     </React.Fragment>
   )
