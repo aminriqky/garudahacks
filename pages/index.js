@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -6,6 +7,8 @@ import {
 } from '@chakra-ui/react';
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <React.Fragment>
       <Flex flexDir={useBreakpointValue({ base: "column", lg: "row" })}>
@@ -30,7 +33,7 @@ export default function Home() {
               <option>Social Media</option>
             </Select>
           </FormControl>
-          <Button w="100%" textColor="white" colorScheme="yellow" mb="4">
+          <Button w="100%" textColor="white" colorScheme="yellow" mb="4" onClick={() => router.push('/account')}>
             Sign Up
           </Button>
           <Checkbox mb="4" size="md" colorScheme="yellow" defaultIsChecked>Sign up for our newsletter</Checkbox>

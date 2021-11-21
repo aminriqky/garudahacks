@@ -59,11 +59,18 @@ export default function Home() {
           <Line data={data} options={options} />
         </Box>
       </Flex>
-      <Stat mt="6" w="125px" bg="gray.200" p="3" borderRadius="6" border="1px" borderColor="gray">
-        <StatLabel>Collected Fees</StatLabel>
-        <StatNumber>£0.00</StatNumber>
-        <StatHelpText>Feb 12 - Feb 28</StatHelpText>
-      </Stat>
+      <Flex flexDir="row" w="345px">
+        <Stat mt="6" w="200px" bg="gray.200" p="3" borderRadius="6" border="1px" borderColor="gray" mr="20px" alignSelf="center">
+          <StatLabel>Content Interaction</StatLabel>
+          <StatNumber>70%</StatNumber>
+          <StatHelpText>Oct 22 - Nov 21</StatHelpText>
+        </Stat>
+        <Stat mt="6" w="125px" bg="gray.200" p="3" borderRadius="6" border="1px" borderColor="gray" alignSelf="center">
+          <StatLabel>Reach</StatLabel>
+          <StatNumber>65%</StatNumber>
+          <StatHelpText>Oct 22 - Nov 21</StatHelpText>
+        </Stat>
+      </Flex>
     </Admin>
   );
 }

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React from 'react';
 import {
   Flex, Icon,useDisclosure, IconButton, Text, Box, Drawer,
@@ -9,9 +10,9 @@ import { MdHome } from "@react-icons/all-files/md/MdHome";
 import { MdSettings } from "@react-icons/all-files/md/MdSettings";
 import { MdExitToApp } from "@react-icons/all-files/md/MdExitToApp";
 import { HiCollection } from "@react-icons/all-files/hi/HiCollection";
-import { FaClipboardCheck } from "@react-icons/all-files/fa/FaClipboardCheck";
 
 export default function Admin(props) {
+  const router = useRouter();
   const sidebar = useDisclosure();
 
   const NavItem = (props) => {
@@ -65,8 +66,8 @@ export default function Admin(props) {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        <NavItem icon={MdHome}>Content Review</NavItem>
-        <NavItem icon={HiCollection}>Content Planning</NavItem>
+        <NavItem onClick={() => router.push('/admin/home')} icon={MdHome}>Content Review</NavItem>
+        <NavItem onClick={() => router.push('/admin/plan')} icon={HiCollection}>Content Planning</NavItem>
         <NavItem icon={MdSettings}>Settings</NavItem>
         <NavItem icon={MdExitToApp}>Sign Out</NavItem>
       </Flex>
