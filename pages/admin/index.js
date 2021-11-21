@@ -1,19 +1,26 @@
-import { useRouter } from 'next/router'
-import React from 'react';
+import { useRouter } from 'next/router';
+import React,{ useEffect } from 'react';
 import {
   Flex, Icon,useDisclosure, IconButton, Text, Box, Drawer,
-  DrawerOverlay, DrawerContent, Avatar
+  DrawerOverlay, DrawerContent
 } from '@chakra-ui/react';
 import { FiMenu } from "@react-icons/all-files/fi/FiMenu";
-import { FaBell } from "@react-icons/all-files/fa/FaBell";
 import { MdHome } from "@react-icons/all-files/md/MdHome";
 import { MdSettings } from "@react-icons/all-files/md/MdSettings";
 import { MdExitToApp } from "@react-icons/all-files/md/MdExitToApp";
 import { HiCollection } from "@react-icons/all-files/hi/HiCollection";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Admin(props) {
   const router = useRouter();
   const sidebar = useDisclosure();
+  const { logout, isAuthenticated } = useAuth0();
+
+  useEffect(() => {
+    if(!isAuthenticated){
+        router.push('/')
+    }
+  });
 
   const NavItem = (props) => {
     const { icon, children, ...rest } = props;
@@ -69,7 +76,7 @@ export default function Admin(props) {
         <NavItem onClick={() => router.push('/admin/home')} icon={MdHome}>Content Review</NavItem>
         <NavItem onClick={() => router.push('/admin/plan')} icon={HiCollection}>Content Planning</NavItem>
         <NavItem icon={MdSettings}>Settings</NavItem>
-        <NavItem icon={MdExitToApp}>Sign Out</NavItem>
+        <NavItem onClick={() => logout({ returnTo: 'http://localhost:3000/' })} icon={MdExitToApp}>Sign Out</NavItem>
       </Flex>
     </Box>
   );
@@ -114,16 +121,6 @@ export default function Admin(props) {
           <Box w="96" display={{ base: "none", md: "flex" }}>
             <Text fontWeight="semibold">My Dashboard</Text>
           </Box>
-          <Flex align="center">
-            <Icon color="gray.500" as={FaBell} cursor="pointer" />
-            <Avatar
-              ml="4"
-              size="sm"
-              name="anubra266"
-              src="https://avatars.githubusercontent.com/u/30869823?v=4"
-              cursor="pointer"
-            />
-          </Flex>
         </Flex>
         <Box as="main" p="4">
           {props.children}

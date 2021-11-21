@@ -1,6 +1,7 @@
 import React from "react";
 import Head from 'next/head';
 import { ChakraProvider } from "@chakra-ui/react"
+import { Auth0Provider } from '@auth0/auth0-react';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
@@ -21,7 +22,12 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <ChakraProvider>
+    <Auth0Provider
+        domain={'nektarapp.us.auth0.com'}
+        clientId={'QLIB91ussJxRGrtueFUfpvVTwQNanYhU'}
+        redirectUri={'http://localhost:3000/'}>
       <Component {...pageProps} />
+      </Auth0Provider>
     </ChakraProvider>
     </React.Fragment>
   )

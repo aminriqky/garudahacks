@@ -1,48 +1,37 @@
-import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
+import router from 'next/router';
+import React,{ useEffect } from 'react';
 import {
-  chakra, Flex, FormControl, Input, Select, Button, Checkbox, AspectRatio, useBreakpointValue, Text, Box
+  chakra, Flex, Button, AspectRatio, useBreakpointValue
 } from '@chakra-ui/react';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Home() {
-  const router = useRouter();
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
+
+  useEffect(() => {
+    if(isAuthenticated){
+        router.push('/admin/home')
+    }
+  });
 
   return (
     <React.Fragment>
       <Flex flexDir={useBreakpointValue({ base: "column", lg: "row" })}>
         <Flex flexDir="column" justifyContent="center" w={{ lg:"600px" }} px={{ base: 8, lg: 20 }} py="36px">
-          <chakra.h1 fontSize={{ base: "4xl", lg: "4xl", xl: "5xl" }} mb={6}
+          <chakra.h1 fontSize={{ base: "4xl", lg: "4xl", xl: "5xl" }} mb={24}
             fontWeight="bold"
             color="black"
             lineHeight="shorter"
           >
             Get started for free.
           </chakra.h1>
-          <FormControl id="email" mb="4">
-            <Input placeholder="Email" type="email" isRequired={true} />
-          </FormControl>
-          <FormControl id="password" mb="4">
-            <Input placeholder="Password" type="password" isRequired={true} />
-          </FormControl>
-          <FormControl id="password" mb="4">
-            <Select placeholder="How did you hear about us?">
-              <option>Friend</option>
-              <option>Family</option>
-              <option>Social Media</option>
-            </Select>
-          </FormControl>
-          <Button w="100%" textColor="white" colorScheme="yellow" mb="4" onClick={() => router.push('/account')}>
+          <Button w="100%" textColor="white" colorScheme="yellow" mb="4" onClick={() => loginWithRedirect(`/account`)}>
             Sign Up
           </Button>
-          <Checkbox mb="4" size="md" colorScheme="yellow" defaultIsChecked>Sign up for our newsletter</Checkbox>
-          <Flex flexDir="row">
-            <Text mr="1">Already have an account?</Text>
-            <Box _hover={{ textDecor: "underline" }} color="orange.600">
-              <Link href="/login">Sign in</Link>
-            </Box>
-          </Flex>
+          <Button onClick={() => loginWithRedirect(`/admin/home`)} w="100%" textColor="white" colorScheme="yellow" mb="4">
+            Sign In
+          </Button>
         </Flex>
         <AspectRatio flexDir="column" bg="gray.200" justifyContent="center" w="100%">
           <Image alt="laptop" src="https://source.unsplash.com/random/?laptop" layout="fill" priority/>

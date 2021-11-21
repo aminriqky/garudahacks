@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import {
-  chakra, Flex, FormControl, Input, Button, Checkbox, AspectRatio, useBreakpointValue, 
-  Text, Box, InputGroup, InputLeftAddon
+  chakra, Flex, Input, Button, AspectRatio, useBreakpointValue, 
+  InputGroup, InputLeftAddon
 } from '@chakra-ui/react';
 
 export default function Login() {
