@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
     <Auth0Provider
         domain={'nektarapp.us.auth0.com'}
         clientId={'QLIB91ussJxRGrtueFUfpvVTwQNanYhU'}
-        redirectUri={'http://localhost:3000/'}>
+        redirectUri={'https://nektarapp.herokuapp.com'}>
       <Component {...pageProps} />
       </Auth0Provider>
     </ChakraProvider>
