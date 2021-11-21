@@ -16,11 +16,11 @@ export default function Admin(props) {
   const sidebar = useDisclosure();
   const { logout, isAuthenticated } = useAuth0();
 
-  useEffect(() => {
-    if(!isAuthenticated){
-        router.push('/')
-    }
-  });
+  //useEffect(() => {
+  //  if(!isAuthenticated){
+  //      router.push('/')
+  //  }
+  //});
 
   const NavItem = (props) => {
     const { icon, children, ...rest } = props;
@@ -76,7 +76,7 @@ export default function Admin(props) {
         <NavItem onClick={() => router.push('/admin/home')} icon={MdHome}>Content Review</NavItem>
         <NavItem onClick={() => router.push('/admin/plan')} icon={HiCollection}>Content Planning</NavItem>
         <NavItem icon={MdSettings}>Settings</NavItem>
-        <NavItem onClick={() => logout({ returnTo: 'http://localhost:3000/' })} icon={MdExitToApp}>Sign Out</NavItem>
+        <NavItem onClick={()=> router.push('/')} icon={MdExitToApp}>Sign Out</NavItem>
       </Flex>
     </Box>
   );

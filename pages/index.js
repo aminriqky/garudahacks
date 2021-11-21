@@ -9,11 +9,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 export default function Home() {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
 
-  useEffect(() => {
-    if(isAuthenticated){
-        router.push('/admin/home')
-    }
-  });
+  //useEffect(() => {
+  //  if(isAuthenticated){
+  //      router.push('/admin/home')
+  //  }
+  //});
 
   return (
     <React.Fragment>
@@ -26,10 +26,10 @@ export default function Home() {
           >
             Get started for free.
           </chakra.h1>
-          <Button w="100%" textColor="white" colorScheme="yellow" mb="4" onClick={() => loginWithRedirect(`/account`)}>
+          <Button onClick={()=> router.push('/admin/home')} w="100%" textColor="white" colorScheme="yellow" mb="4">
             Sign Up
           </Button>
-          <Button onClick={() => loginWithRedirect(`/admin/home`)} w="100%" textColor="white" colorScheme="yellow" mb="4">
+          <Button onClick={()=> router.push('/admin/home')} w="100%" textColor="white" colorScheme="yellow" mb="4">
             Sign In
           </Button>
         </Flex>
